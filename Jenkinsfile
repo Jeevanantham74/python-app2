@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout Code') {
             steps {
-                echo 'Stage 1: Cloning and checking out repository source code...'
-                checkout scm
+                git branch: 'main',
+                    url: 'https://github.com/Jeevanantham74/python-app2.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Stage 2: Verifying Python installation and executing program...'
-            
-                bat 'python --version'
-                bat 'python app.py 12.5 7.5'
+                bat 'py --version'
+                bat 'py app.py 10 20'
             }
         }
+
     }
 }
